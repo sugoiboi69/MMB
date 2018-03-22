@@ -46,8 +46,11 @@ async def on_message(message):
         list_of_results = str(driver.find_elements_by_link_text('Pokemon'))
         await bot.send_message(message.channel, 'The image seems to be: ' + str(bestguess))
         await bot.send_message(message.channel, '----------------------------------------------------------------')
-        print(len(list_of_results))
-        
+        if str(list_of_results) is '[]':
+            bot.send_message(message.channel, 'No results.') 
+
+        else:
+            print(str(list_of_results))       
 
         driver.close()    
 
